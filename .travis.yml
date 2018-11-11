@@ -3,7 +3,11 @@ rvm:
   - 2.3.0
 
 script:
+  - bin/setup
   - bundle exec rubocop
+
+services:
+  - postgresql
 
 notifications:
   email:
