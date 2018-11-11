@@ -1,10 +1,11 @@
-require 'pry'
+# frozen_string_literal: true
 
+# Person class
 class Person < ActiveRecord::Base
   belongs_to :location
   belongs_to :role
-  belongs_to :manager, class_name: "Person", foreign_key: :manager_id
-  has_many :employees, class_name: "Person", foreign_key: :manager_id
+  belongs_to :manager, class_name: 'Person', foreign_key: :manager_id
+  has_many :employees, class_name: 'Person', foreign_key: :manager_id
 
   def self.order_by_location_name
     joins(:location).order('locations.name')
@@ -20,7 +21,7 @@ class Person < ActiveRecord::Base
   end
 
   def self.with_employees
-    self.managers.where(id: self.with_managers.pluck(:manager_id))
+    managers.where(id: with_managers.pluck(:manager_id))
     # joins(:employees).distinct - thoughtbot
   end
 
