@@ -1,0 +1,8 @@
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - vendor/bundle/**/*
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
